@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>forgor password</title>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+    <script src="index.js"></script>
+	<style>
+		
+		body{
+			margin: 0;
+			padding: 0;
+            font-family: sans-serif;
+		}
+		.container-fluid{
+			
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            background: url(team.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+		}
+		h1{
+			margin: 0;
+            margin-bottom: 35px;
+            text-align: center;
+
+		}
+        h4{
+            font-weight: 100;
+        }
+		.modal1{
+			width: 30%;
+            /* height: 30%; */
+			/* margin: auto; */
+            padding: 55px 20px 45px 20px;
+            
+			text-align: center;
+            background: #fff;
+            box-shadow: 10px 10px 30px #606060;
+            border-radius: 10px;
+		}
+        input{
+            width: 80%;
+            font-size: 16px;
+            padding: 8px 15px;
+            border: none;
+            outline: none;
+            border: 1px solid #000;
+            border-radius: 10px;
+        }
+        button{
+            margin: 25px 0 0 0;
+            padding: 7px 15px;
+            cursor: pointer;
+            outline: none;
+            border-radius: 10px;
+        }
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="modal1">
+			<h1>FORGOT PASSWORD ?</h1>
+			<h4>Please Enter Your Email Address, We will send mail to change your password.</h4>
+			<input type="email" required="" id="email" >
+			<div class="bt-update">
+                <button id="btn-update" type="button" onclick="reset()">RESET PASSWORD</button>
+                
+            </div>
+			
+		</div>
+		
+    </div>
+    
+    <!-- <script>
+        function myFun3()
+        {
+            window.alert("please enter email id");
+            var auth=firebase.auth();
+            var email=$("#email123").val();
+            var email=document.getElementById("email").value
+            if(email!="")
+            {
+                auth.sendPasswordResetEmail(email).then(function(){
+                    window.alert("please verify your email");
+
+                }).catch(function(error){
+                    var errorcode=error.code;
+                    var message=error.message;
+                    console.log(message);
+                    console.log(errorcode);
+                    window.alert("message:"+message);
+                });
+            }else{
+                window.alert("please enter email id");
+
+            }
+        }
+    </script> -->
+</body>
+</html>

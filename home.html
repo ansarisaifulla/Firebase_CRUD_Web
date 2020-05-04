@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <title>Register</title>
+    <head>
+        <!-- <link rel="stylesheet" href="css/styleregister.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+
+        
+        <!-- <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>		 -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>        
+        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+        <script src="index.js"></script>		
+
+        <style>
+            body{
+    margin: 0;
+    padding: 0;
+    /* font-family: sans-serif; */
+}
+.container-fluid{
+    /* margin: 0; */
+    /* padding: 0; */
+    width: 100%;
+    height: 100vh;
+    background: url(team.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+h1{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.modal1{
+    padding: 50px 25px;
+    width: 35%;
+    top: 50%;
+    left: 50%;
+    border-radius: 5%;
+    text-align: center;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    /* margin: auto; */
+    background: #fff;
+    box-shadow:10px 10px 30px grey; 
+    /* box-shadow: 5px 10px #888888; */
+}
+button{
+    width: 70%;
+    margin: 10px auto 0 auto;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+    background: green;
+    outline: none;
+    color: white;
+}
+   </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="modal1">
+                <h1>Home</h1>
+            <button type="button" id="btn-update" onclick="window.location.href='update.html'">Update Details</button>
+            <button type="button" id="btn-read" onclick="Details()">Read Details</button>
+            <button type="button" id="btn-delete" onclick="Delete()">Delete account</button>
+            <button type="button" id="btn-signout" onclick="signOut()">Sign Out</button>
+            </div>
+            
+        </div>
+
+        <script>
+            function Details()
+            {
+                // window.alert("name: ");
+                var userID = firebase.auth().currentUser.uid;
+                firebase.database().ref('Users/' + userID).once('value').then(function(snapshot){
+                    if(snapshot.val())
+                    {
+                         window.alert("name: "+snapshot.val().FirstName);
+                    }else{
+                      window.location.href = "accountsettings.html";
+                    }
+                });
+            }
+        </script>
+     
+    </body>
+</html>
